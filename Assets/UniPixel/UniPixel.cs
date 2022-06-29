@@ -1,10 +1,12 @@
 using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UniPixel : MonoBehaviour
+public sealed class UniPixel : MonoBehaviour
 {
     public static int[,] Panel
     {
@@ -35,19 +37,34 @@ public class UniPixel : MonoBehaviour
 
     public Texture2D Texture2D;
 
-    public static Action starts;
-    public static Action updates;
+    public static Action Starts;
+    public static Action Updates;
 
     private void Start()
     {
         Texture2D = new Texture2D(128, 128);
-
-        if (starts != null)
+        foreach (var instance in CreateInterfaceInstances<Uni>())
         {
-            starts();   
+            instance?.Init();
+        }
+
+
+        if (Starts != null)
+        {
+            Starts();   
         }
         Rendering();
         StartCoroutine(MainLoop());
+        
+        static Type[] GetInterfaces<T>()
+        {
+            return Assembly.GetExecutingAssembly().GetTypes().Where(c => c.GetInterfaces().Any(t => t == typeof(T))).ToArray();
+        }
+        
+        static T[] CreateInterfaceInstances<T>() where T : class
+        {
+            return GetInterfaces<T>().Select(c => Activator.CreateInstance(c) as T).ToArray();
+        }
     }
 
     public static Color GetColor(int color)
@@ -118,30 +135,23 @@ public class UniPixel : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1 / 60f);
-            if (updates != null)
+            if (Updates != null)
             {
-                updates();   
+                Updates();   
             }
             Rendering();
         }
     }
 }
 
-public abstract class Uni : MonoBehaviour
+public interface Uni
 {
-    public void Awake()
+    public void Init()
     {
-        UniPixel.starts += UniStart;
-        UniPixel.updates += UniUpdate;
-    }
+        UniPixel.Starts += Start;
+        UniPixel.Updates += Update;
 
-    public virtual void UniStart()
-    {
-        
     }
-
-    public virtual void UniUpdate()
-    {
-        
-    }
+    public void Start();
+    public void Update();
 }
