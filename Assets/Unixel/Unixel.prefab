@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3296868679188452323}
   - component: {fileID: 3296868679188452320}
   m_Layer: 0
-  m_Name: UniPixel
+  m_Name: Unixel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
