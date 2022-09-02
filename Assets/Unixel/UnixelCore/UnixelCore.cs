@@ -27,5 +27,29 @@ namespace Unixel.Core
                 }
             }
         }
+
+        public void SetPixel(int x, int y, Color color)
+        {
+            if (x >= 0 && y >= 0 && x < Size.x && y < Size.y)
+            {
+                SetPixelLow(x, y, color);
+            }
+        }
+
+        public void Clear(Color color)
+        {
+            for (int y = 0; y < Size.y; y++)
+            {
+                for (int x = 0; x < Size.x; x++)
+                {
+                    SetPixelLow(x, y, color);
+                }
+            }
+        }
+
+        public void SetPixelLow(int x, int y, Color color)
+        {
+            Image[x, y] = color;
+        }
     }
 }

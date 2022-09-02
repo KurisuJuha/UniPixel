@@ -1,26 +1,30 @@
+using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using Unixel.Unity;
-using UnityEngine;
+using Unixel.Core;
 
 public class Sample
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.AfterSceneLoad)]
     public static void Init()
     {
         var s = new Sample();
 
+        s.core = UnixelUnity.core;
         UnixelUnity.core.Start += s.Start;
         UnixelUnity.core.Update += s.Update;
     }
 
+    public UnixelCore core;
+
     public void Start()
     {
-        Debug.Log("start");
+        core.SetPixel(64, 32, Color.Black);
     }
 
     public void Update()
     {
-        Debug.Log("update");
+
     }
 }
