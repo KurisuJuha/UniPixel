@@ -36,6 +36,8 @@ namespace Unixel.Core
             }
         }
 
+        public void Clear() => Clear(Color.White);
+
         public void Clear(Color color)
         {
             for (int y = 0; y < Size.y; y++)

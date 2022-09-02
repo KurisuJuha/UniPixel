@@ -25,6 +25,6 @@ public class Sample
 
     public void Update()
     {
-
+        core.Clear();
     }
 }
