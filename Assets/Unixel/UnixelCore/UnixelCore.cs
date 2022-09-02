@@ -23,8 +23,6 @@ namespace Unixel.Core
                     Image[x, y] = Color.White;
                 }
             }
-
-            Image[64, 32] = Color.Black;
         }
     }
 }
