@@ -11,6 +11,9 @@ namespace Unixel.Core
         public Vector2Int Size { get; private set; }
         public Color[,] Image { get; private set; }
 
+        public Action Start;
+        public Action Update;
+
         public UnixelCore()
         {
             Size = new Vector2Int(128, 64);

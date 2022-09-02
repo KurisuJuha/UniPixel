@@ -10,10 +10,16 @@ namespace Unixel.Unity
         public Mesh mesh;
         public Material material;
         public Texture2D texture;
-        public UnixelCore core;
+        public static UnixelCore core;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void Init()
+        {
+            core = new UnixelCore();
+        }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        public static void Init()
+        public static void ObjectInit()
         {
             GameObject gameObject = Instantiate((GameObject)Resources.Load("Unixel"));
             gameObject.name = "Unixel";
@@ -27,7 +33,6 @@ namespace Unixel.Unity
 
         public void Start()
         {
-            core = new UnixelCore();
             mesh = new Mesh();
             texture = new Texture2D(core.Size.x, core.Size.y);
             texture.filterMode = FilterMode.Point;
@@ -45,9 +50,13 @@ namespace Unixel.Unity
 
         public IEnumerator MainLoop()
         {
+            core.Start();
+
             while (true)
             {
                 yield return new WaitForSeconds(1 / 60f);
+
+                core.Update();
             }
         }
 
