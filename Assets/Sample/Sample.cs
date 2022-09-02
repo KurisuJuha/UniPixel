@@ -31,10 +31,6 @@ public class Sample
     public void Update()
     {
         Position += new Vector2Int((int)Input.Horizontal, (int)Input.Vertical);
-        if ()
-        {
-
-        }
         Core.Clear();
     }
 }
