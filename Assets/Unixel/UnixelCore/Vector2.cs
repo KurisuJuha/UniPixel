@@ -13,4 +13,14 @@ public struct Vector2
         this.x = x;
         this.y = y;
     }
+
+    public static Vector2 operator+ (Vector2 z, Vector2 w)
+    {
+        return new Vector2(z.x + w.x, z.y + w.y);
+    }
+
+    public static Vector2 operator- (Vector2 z, Vector2 w)
+    {
+        return new Vector2(z.x - w.x, z.y - w.y);
+    }
 }

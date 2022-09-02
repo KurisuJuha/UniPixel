@@ -53,6 +53,7 @@ namespace Unixel.Unity
         {
             MeshGenerate();
             TextureGenerate();
+            SetInput();
             Graphics.DrawMesh(mesh, Vector3.zero, Quaternion.identity, material, 0);
         }
 
@@ -112,6 +113,19 @@ namespace Unixel.Unity
                 }
             }
             texture.Apply();
+        }
+
+        public void SetInput()
+        {
+            var input = core.Input;
+            input.Horizontal = Input.GetAxisRaw("Horizontal");
+            input.Vertical = Input.GetAxisRaw("Vertical");
+            input.A = Input.GetKey(KeyCode.Z);
+            input.B = Input.GetKey(KeyCode.X);
+            input.A_Down = Input.GetKeyDown(KeyCode.Z);
+            input.B_Down = Input.GetKeyDown(KeyCode.X);
+            input.A_Up = Input.GetKeyUp(KeyCode.Z);
+            input.B_Up = Input.GetKeyUp(KeyCode.X);
         }
     }
 }

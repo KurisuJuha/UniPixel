@@ -13,4 +13,14 @@ public struct Vector2Int
         this.x = x;
         this.y = y;
     }
+
+    public static Vector2Int operator+ (Vector2Int z, Vector2Int w)
+    {
+        return new Vector2Int(z.x + w.x, z.y + w.y);
+    }
+
+    public static Vector2Int operator- (Vector2Int z, Vector2Int w)
+    {
+        return new Vector2Int(z.x - w.x, z.y - w.y);
+    }
 }

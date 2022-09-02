@@ -1,7 +1,6 @@
 using System;
 using System.Drawing;
-using System.Collections;
-using System.Collections.Generic;
+using Unixel.Core.Input;
 
 namespace Unixel.Core
 {
@@ -14,10 +13,14 @@ namespace Unixel.Core
         public Action Start;
         public Action Update;
 
+        public UnixelInput Input;
+
         public UnixelCore(Vector2Int size)
         {
             Size = size;
             Image = new Color[Size.x, Size.y];
+
+            Input = new UnixelInput();
 
             for (int y = 0; y < Size.y; y++)
             {
