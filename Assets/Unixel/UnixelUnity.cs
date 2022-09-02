@@ -31,34 +31,13 @@ namespace Unixel.Unity
 
         public void Update()
         {
-            //            float x = core.Size.x > core.Size.y ? 1 : core.Size.x / (float)core.Size.y;
-            //            float y = core.Size.x > core.Size.y ? core.Size.y / (float)core.Size.x : 1;
+            float height = core.Size.y / (float)core.Size.x;
+            float width = 1;
 
-            float x = 1;
-            float y = core.Size.y / (float)core.Size.x;
+            float m = width / height > Camera.main.aspect ? Camera.main.orthographicSize * Camera.main.aspect : Camera.main.orthographicSize / height;
 
-            float height = y;
-            float width = x;
-
-            float a1 = x / y;
-            float a2 = Camera.main.aspect;
-
-            Debug.Log(y);
-
-            if (a1 > a2)
-            {
-                // width
-                Debug.Log("a");
-                width *= Camera.main.orthographicSize * Camera.main.aspect;
-                height *= Camera.main.orthographicSize * Camera.main.aspect;
-            }
-            else
-            {
-                // height
-                Debug.Log("b");
-                width *= Camera.main.orthographicSize / y;
-                height *= Camera.main.orthographicSize / y;
-            }
+            width *= m;
+            height *= m;
 
 
 
