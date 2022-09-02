@@ -11,6 +11,7 @@ public class Sample
     {
         var s = new Sample();
 
+        UnixelUnity.Init(128, 128);
         s.core = UnixelUnity.core;
         UnixelUnity.core.Start += s.Start;
         UnixelUnity.core.Update += s.Update;

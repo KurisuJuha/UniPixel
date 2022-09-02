@@ -14,9 +14,9 @@ namespace Unixel.Core
         public Action Start;
         public Action Update;
 
-        public UnixelCore()
+        public UnixelCore(Vector2Int size)
         {
-            Size = new Vector2Int(128, 64);
+            Size = size;
             Image = new Color[Size.x, Size.y];
 
             for (int y = 0; y < Size.y; y++)
