@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 0}
-  material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 2100000, guid: ba7f8bce88cdbd040acb77d16c133e5f, type: 2}
+  texture: {fileID: 0}
