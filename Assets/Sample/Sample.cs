@@ -21,16 +21,18 @@ public class Sample
 
     public UnixelCore Core;
     public UnixelInput Input;
-    public Vector2Int Position;
+    public Vector2 Position;
 
     public void Start()
     {
-        Core.SetPixel(64, 32, Color.Black);
+        Core.SetPixel(new Vector2Int(64, 32), Color.Black);
     }
 
     public void Update()
     {
-        Position += new Vector2Int((int)Input.Horizontal, (int)Input.Vertical);
         Core.Clear();
+        Position += new Vector2(Input.Horizontal, Input.Vertical);
+
+        Core.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), Color.Black);
     }
 }

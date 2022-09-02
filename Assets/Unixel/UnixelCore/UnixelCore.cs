@@ -34,14 +34,11 @@ namespace Unixel.Core
         /// <summary>
         /// 画面に安全にピクセルを描画します。
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="color"></param>
-        public void SetPixel(int x, int y, Color color)
+        public void SetPixel(Vector2Int pos, Color color)
         {
-            if (x >= 0 && y >= 0 && x < Size.x && y < Size.y)
+            if (pos.x >= 0 && pos.y >= 0 && pos.x < Size.x && pos.y < Size.y)
             {
-                SetPixelLow(x, y, color);
+                SetPixelLow(pos, color);
             }
         }
 
@@ -53,14 +50,13 @@ namespace Unixel.Core
         /// <summary>
         /// 画面を指定した色で塗りつぶします。
         /// </summary>
-        /// <param name="color"></param>
         public void Clear(Color color)
         {
             for (int y = 0; y < Size.y; y++)
             {
                 for (int x = 0; x < Size.x; x++)
                 {
-                    SetPixelLow(x, y, color);
+                    SetPixelLow(new Vector2Int(x, y), color);
                 }
             }
         }
@@ -71,12 +67,9 @@ namespace Unixel.Core
         /// 画面にピクセルを描画します。
         /// 描画できるかどうかの判定をしないため高速ですが安全ではありません。
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="color"></param>
-        public void SetPixelLow(int x, int y, Color color)
+        public void SetPixelLow(Vector2Int pos, Color color)
         {
-            Image[x, y] = color;
+            Image[pos.x, pos.y] = color;
         }
 
         #endregion
