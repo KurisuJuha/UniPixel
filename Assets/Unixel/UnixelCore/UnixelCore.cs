@@ -7,6 +7,6 @@ namespace Unixel.Core
     [Serializable]
     public class UnixelCore
     {
-        public Vector2 Size;
+        public Vector2Int Size { get; private set; } = new Vector2Int(128, 32);
     }
 }
