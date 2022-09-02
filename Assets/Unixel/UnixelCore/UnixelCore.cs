@@ -28,6 +28,12 @@ namespace Unixel.Core
             }
         }
 
+        /// <summary>
+        /// 画面に安全にピクセルを描画します。
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="color"></param>
         public void SetPixel(int x, int y, Color color)
         {
             if (x >= 0 && y >= 0 && x < Size.x && y < Size.y)
@@ -36,8 +42,15 @@ namespace Unixel.Core
             }
         }
 
+        /// <summary>
+        /// 画面を白色で塗りつぶします。
+        /// </summary>
         public void Clear() => Clear(Color.White);
-
+        
+        /// <summary>
+        /// 画面を指定した色で塗りつぶします。
+        /// </summary>
+        /// <param name="color"></param>
         public void Clear(Color color)
         {
             for (int y = 0; y < Size.y; y++)
@@ -49,9 +62,20 @@ namespace Unixel.Core
             }
         }
 
+        #region 安全じゃないやつ
+
+        /// <summary>
+        /// 画面にピクセルを描画します。
+        /// 描画できるかどうかの判定をしないため高速ですが安全ではありません。
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="color"></param>
         public void SetPixelLow(int x, int y, Color color)
         {
             Image[x, y] = color;
         }
+
+        #endregion
     }
 }
