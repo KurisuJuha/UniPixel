@@ -11,27 +11,14 @@ namespace Unixel.Unity
         public Material material;
         public Texture2D texture;
         public static UnixelCore core;
-        private static bool init;
 
         public static void Init(int x, int y)
         {
             core = new UnixelCore(new Vector2Int(x, y));
-            init = true;
-        }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        public static void ObjectInit()
-        {
-            if (init)
-            {
-                GameObject gameObject = Instantiate((GameObject)Resources.Load("Unixel"));
-                gameObject.name = "Unixel";
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Debug.Log("UnixelUnityÇèâä˙âªÇµÇƒÇ≠ÇæÇ≥Ç¢");
-            }
+            GameObject gameObject = Instantiate((GameObject)Resources.Load("Unixel"));
+            gameObject.name = "Unixel";
+            DontDestroyOnLoad(gameObject);
         }
 
         public void Awake()
