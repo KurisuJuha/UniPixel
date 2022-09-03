@@ -29,7 +29,7 @@ namespace Unixel.Unity
         public void Start()
         {
             mesh = new Mesh();
-            texture = new Texture2D(core.Size.x, core.Size.y);
+            texture = new Texture2D(core.Display.size.x, core.Display.size.y);
             texture.filterMode = FilterMode.Point;
             material.color = Color.white;
             material.mainTexture = texture;
@@ -58,7 +58,7 @@ namespace Unixel.Unity
 
         public void MeshGenerate()
         {
-            float height = core.Size.y / (float)core.Size.x;
+            float height = core.Display.size.y / (float)core.Display.size.x;
             float width = 1;
 
             float m = width / height > Camera.main.aspect ? Camera.main.orthographicSize * Camera.main.aspect : Camera.main.orthographicSize / height;
@@ -90,13 +90,13 @@ namespace Unixel.Unity
 
         public void TextureGenerate()
         {
-            var pixelData = texture.GetPixelData<Color32>(0);
-            for (int y = 0; y < core.Size.y; y++)
+            var pixelData = texture.GetPixels32();
+            for (int y = 0; y < core.Display.size.y; y++)
             {
-                for (int x = 0; x < core.Size.x; x++)
+                for (int x = 0; x < core.Display.size.x; x++)
                 {
                     var c = core.Display.image[x, y];
-                    pixelData[y * core.Size.x + x] = new Color(c.R, c.G, c.B);
+                    texture.SetPixel(x, y, new Color32(c.R, c.G, c.B, c.A));
                 }
             }
             texture.Apply();
@@ -113,6 +113,25 @@ namespace Unixel.Unity
             input.B_Down = Input.GetKeyDown(KeyCode.X);
             input.A_Up = Input.GetKeyUp(KeyCode.Z);
             input.B_Up = Input.GetKeyUp(KeyCode.X);
+        }
+
+        public static Image LoadImage(string path)
+        {
+            Texture2D texture = Resources.Load<Sprite>(path).texture;
+            Image image = new Image(new Vector2Int(texture.width, texture.height));
+            Color32[] cs = texture.GetPixels32();
+
+            for (int y = 0; y < texture.height; y++)
+            {
+                for (int x = 0; x < texture.width; x++)
+                {
+                    var c = cs[y * texture.width + x];
+                    Debug.Log(c.a);
+                    image.SetPixelLow(new Vector2Int(x, y), System.Drawing.Color.FromArgb(c.a, c.r, c.g, c.b));
+                }
+            }
+
+            return image;
         }
     }
 }

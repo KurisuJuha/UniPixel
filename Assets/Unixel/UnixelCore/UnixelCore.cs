@@ -7,7 +7,6 @@ namespace Unixel.Core
     [Serializable]
     public class UnixelCore
     {
-        public Vector2Int Size { get; private set; }
         public Image Display { get; private set; }
 
         public Action Start;
@@ -17,7 +16,6 @@ namespace Unixel.Core
 
         public UnixelCore(Vector2Int size)
         {
-            Size = size;
             Display = new Image(size);
 
             Input = new UnixelInput();

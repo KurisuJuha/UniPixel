@@ -14,6 +14,11 @@ public struct Vector2Int
         this.y = y;
     }
 
+    public override string ToString()
+    {
+        return "(" + x + "," + y + ")";
+    }
+
     public static Vector2Int operator+ (Vector2Int z, Vector2Int w)
     {
         return new Vector2Int(z.x + w.x, z.y + w.y);

@@ -22,10 +22,12 @@ public class Sample
     public UnixelCore Core;
     public UnixelInput Input;
     public Vector2 Position;
+    Image image;
 
     public void Start()
     {
-        Core.Display.SetPixel(new Vector2Int(64, 32), Color.Black);
+        image = UnixelUnity.LoadImage("test");
+        Position = new Vector2(10,10);
     }
 
     public void Update()
@@ -33,6 +35,8 @@ public class Sample
         Core.Display.Clear();
         Position += new Vector2(Input.Horizontal, Input.Vertical);
 
-        Core.Display.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), Color.Black);
+        Core.Display.SetImage(new Vector2Int((int)Position.x, (int)Position.y), image);
+//        Core.Display.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), image.image[4, 4]);
+//        Core.Display.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), Color.Black);
     }
 }
