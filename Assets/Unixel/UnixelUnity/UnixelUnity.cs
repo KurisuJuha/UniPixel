@@ -126,7 +126,6 @@ namespace Unixel.Unity
                 for (int x = 0; x < texture.width; x++)
                 {
                     var c = cs[y * texture.width + x];
-                    Debug.Log(c.a);
                     image.SetPixelLow(new Vector2Int(x, y), System.Drawing.Color.FromArgb(c.a, c.r, c.g, c.b));
                 }
             }

@@ -25,7 +25,6 @@ namespace Unixel.Core
             if (pos.x >= 0 && pos.y >= 0 && pos.x < size.x && pos.y < size.y)
             {
                 SetPixelLow(pos, color);
-                UnityEngine.Debug.Log(pos + "," + color);
             }
         }
 
