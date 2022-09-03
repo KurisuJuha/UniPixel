@@ -25,14 +25,14 @@ public class Sample
 
     public void Start()
     {
-        Core.SetPixel(new Vector2Int(64, 32), Color.Black);
+        Core.Display.SetPixel(new Vector2Int(64, 32), Color.Black);
     }
 
     public void Update()
     {
-        Core.Clear();
+        Core.Display.Clear();
         Position += new Vector2(Input.Horizontal, Input.Vertical);
 
-        Core.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), Color.Black);
+        Core.Display.SetPixel(new Vector2Int((int)Position.x, (int)Position.y), Color.Black);
     }
 }

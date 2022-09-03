@@ -95,7 +95,7 @@ namespace Unixel.Unity
             {
                 for (int x = 0; x < core.Size.x; x++)
                 {
-                    var c = core.Image[x, y];
+                    var c = core.Display.image[x, y];
                     pixelData[y * core.Size.x + x] = new Color(c.R, c.G, c.B);
                 }
             }
