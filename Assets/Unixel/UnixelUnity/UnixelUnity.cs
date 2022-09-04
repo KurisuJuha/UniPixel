@@ -12,6 +12,9 @@ namespace Unixel.Unity
         public Texture2D texture;
         public static UnixelCore core;
 
+        /// <summary>
+        /// UnixelUnityを初期化します。
+        /// </summary>
         public static void Init(int x, int y)
         {
             core = new UnixelCore(new Core.Vector.Vector2Int(x, y));
@@ -19,11 +22,6 @@ namespace Unixel.Unity
             GameObject gameObject = Instantiate((GameObject)Resources.Load("Unixel"));
             gameObject.name = "Unixel";
             DontDestroyOnLoad(gameObject);
-        }
-
-        public void Awake()
-        {
-
         }
 
         public void Start()
