@@ -9,10 +9,18 @@ namespace Unixel.Core
         public Color[,] image;
         public Vector2Int size;
 
+        // シェーダー
+        public delegate Color FragmentShader(Vector2Int Pos, Vector2Int Size, Color[,] image);
+        public FragmentShader shader;
+
         public Image(Vector2Int size)
         {
             image = new Color[size.x, size.y];
             this.size = size;
+            shader = (Vector2Int Pos, Vector2Int Size, Color[,] image) =>
+            {
+                return image[Pos.x, Pos.y];
+            };
         }
 
         public void SetPixelLow(Vector2Int pos, Color color)
@@ -50,7 +58,7 @@ namespace Unixel.Core
             {
                 for (int x = 0; x < size.x; x++)
                 {
-                    Color c = image.image[x, y];
+                    Color c = image.shader(new Vector2Int(x, y), size, image.image);
                     if (c.A != 0) SetPixel(new Vector2Int(x, y) + pos, c);
                 }
             }
