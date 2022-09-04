@@ -14,7 +14,7 @@ namespace Unixel.Unity
 
         public static void Init(int x, int y)
         {
-            core = new UnixelCore(new Vector2Int(x, y));
+            core = new UnixelCore(new Core.Vector.Vector2Int(x, y));
 
             GameObject gameObject = Instantiate((GameObject)Resources.Load("Unixel"));
             gameObject.name = "Unixel";
@@ -118,7 +118,7 @@ namespace Unixel.Unity
         public static Image LoadImage(string path)
         {
             Texture2D texture = Resources.Load<Sprite>(path).texture;
-            Image image = new Image(new Vector2Int(texture.width, texture.height));
+            Image image = new Image(new Core.Vector.Vector2Int(texture.width, texture.height));
             Color32[] cs = texture.GetPixels32();
 
             for (int y = 0; y < texture.height; y++)
@@ -126,7 +126,7 @@ namespace Unixel.Unity
                 for (int x = 0; x < texture.width; x++)
                 {
                     var c = cs[y * texture.width + x];
-                    image.SetPixelLow(new Vector2Int(x, y), System.Drawing.Color.FromArgb(c.a, c.r, c.g, c.b));
+                    image.SetPixelLow(new Core.Vector.Vector2Int(x, y), System.Drawing.Color.FromArgb(c.a, c.r, c.g, c.b));
                 }
             }
 
