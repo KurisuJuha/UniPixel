@@ -1,6 +1,7 @@
 using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
+using Unixel.Core.Vector;
 
 namespace Unixel.Core
 {
@@ -43,7 +44,6 @@ namespace Unixel.Core
                 for (int x = 0; x < size.x; x++)
                 {
                     SetPixelLow(new Vector2Int(x, y), color);
-//                    image[x, y] = color;
                 }
             }
         }
