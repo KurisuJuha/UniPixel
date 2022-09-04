@@ -1,4 +1,4 @@
-using System.Drawing;
+Ôªøusing System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using Unixel.Core.Vector;
@@ -10,7 +10,7 @@ namespace Unixel.Core
         public Color[,] image;
         public Vector2Int size;
 
-        // ÉVÉFÅ[É_Å[
+        // „Ç∑„Çß„Éº„ÉÄ„Éº
         public delegate Color FragmentShader(Vector2Int Pos, Vector2Int Size, Color[,] image);
         public FragmentShader shader;
 

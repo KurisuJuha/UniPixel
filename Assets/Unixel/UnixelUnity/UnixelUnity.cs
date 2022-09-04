@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unixel.Core;
@@ -44,6 +44,10 @@ namespace Unixel.Unity
             Graphics.DrawMesh(mesh, Vector3.zero, Quaternion.identity, material, 0);
         }
 
+        /// <summary>
+        /// UnityのUpdateとは別でUnixelCoreのUpdateを60fpsで動かす
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator MainLoop()
         {
             core.Start();

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unixel.Core.Vector;
@@ -19,7 +19,7 @@ namespace Unixel.Core.Physics
         }
 
         /// <summary>
-        /// ˆø”‚Ìbox‚Æ“–‚½‚Á‚Ä‚¢‚ê‚Îtrue‚ğ•Ô‚µA“–‚½‚Á‚Ä‚¢‚È‚¯‚ê‚Îfalse‚ğ•Ô‚·
+        /// å¼•æ•°ã®boxã¨å½“ãŸã£ã¦ã„ã‚Œã°trueã‚’è¿”ã—ã€å½“ãŸã£ã¦ã„ãªã‘ã‚Œã°falseã‚’è¿”ã™ 
         /// </summary>
         public bool Detect(Box box)
         {

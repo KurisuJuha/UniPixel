@@ -1,4 +1,4 @@
-using Unixel.Unity;
+﻿using Unixel.Unity;
 using Unixel.Core;
 using Unixel.Core.Input;
 using Unixel.Core.Vector;
@@ -28,7 +28,6 @@ public class Sample
     Box a_box;
     Box b_box;
     
-
     public void Start()
     {
         a_image = UnixelUnity.LoadImage("test");
