@@ -47,7 +47,6 @@ namespace Unixel.Unity
         /// <summary>
         /// UnityのUpdateとは別でUnixelCoreのUpdateを60fpsで動かす
         /// </summary>
-        /// <returns></returns>
         public IEnumerator MainLoop()
         {
             core.Start();
@@ -60,6 +59,9 @@ namespace Unixel.Unity
             }
         }
 
+        /// <summary>
+        /// 画面のサイズに合わせてメッシュを生成する
+        /// </summary>
         public void MeshGenerate()
         {
             float height = core.Display.size.y / (float)core.Display.size.x;
@@ -92,6 +94,9 @@ namespace Unixel.Unity
             });
         }
 
+        /// <summary>
+        /// UnixelCoreのカラー配列を使用してテクスチャを生成する
+        /// </summary>
         public void TextureGenerate()
         {
             var pixelData = texture.GetPixels32();
@@ -106,6 +111,9 @@ namespace Unixel.Unity
             texture.Apply();
         }
 
+        /// <summary>
+        /// UnixelCoreのInputに値をセットしておく
+        /// </summary>
         public void SetInput()
         {
             var input = core.Input;
@@ -119,6 +127,9 @@ namespace Unixel.Unity
             input.B_Up = Input.GetKeyUp(KeyCode.X);
         }
 
+        /// <summary>
+        /// Resources内の指定された名前のSpriteを取得し、Imageにして返します。
+        /// </summary>
         public static Image LoadImage(string path)
         {
             Texture2D texture = Resources.Load<Sprite>(path).texture;
